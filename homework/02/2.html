@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>全功能表單樣式展示</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; max-width: 600px; margin: 20px auto; padding: 20px; background: #f4f4f9; }
+        form { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .field-group { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; }
+        input[type="text"], input[type="email"], input[type="password"], input[type="number"], 
+        input[type="tel"], input[type="url"], select, textarea {
+            width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;
+        }
+        .inline-group { display: flex; align-items: center; gap: 10px; }
+        .inline-group label { display: inline; font-weight: normal; margin: 0; }
+        button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+
+    <h2>問卷調查與樣式展示</h2>
+    
+    <form action="#">
+        <!-- 文字與基本輸入 -->
+        <div class="field-group">
+            <label for="name">姓名 (text):</label>
+            <input type="text" id="name" placeholder="請輸入姓名" required>
+        </div>
+
+        <div class="field-group">
+            <label for="email">電子郵件 (email):</label>
+            <input type="email" id="email" placeholder="example@mail.com">
+        </div>
+
+        <div class="field-group">
+            <label for="pwd">密碼 (password):</label>
+            <input type="password" id="pwd">
+        </div>
+
+        <!-- 數字與範圍 -->
+        <div class="field-group">
+            <label for="age">年齡 (number):</label>
+            <input type="number" id="age" min="0" max="120" value="25">
+        </div>
+
+        <div class="field-group">
+            <label for="satisfaction">滿意度 (range):</label>
+            <input type="range" id="satisfaction" min="0" max="100">
+        </div>
+
+        <!-- 日期與時間 -->
+        <div class="field-group">
+            <label for="bday">生日 (date):</label>
+            <input type="date" id="bday">
+        </div>
+
+        <div class="field-group">
+            <label for="meeting">預約時間 (datetime-local):</label>
+            <input type="datetime-local" id="meeting">
+        </div>
+
+        <!-- 選擇類型 -->
+        <div class="field-group">
+            <label>性別 (radio):</label>
+            <div class="inline-group">
+                <input type="radio" id="m" name="gender" value="m"><label for="m">男</label>
+                <input type="radio" id="f" name="gender" value="f"><label for="f">女</label>
+            </div>
+        </div>
+
+        <div class="field-group">
+            <label>興趣 (checkbox):</label>
+            <div class="inline-group">
+                <input type="checkbox" id="c1"><label for="c1">運動</label>
+                <input type="checkbox" id="c2"><label for="c2">閱讀</label>
+                <input type="checkbox" id="c3"><label for="c3">旅遊</label>
+            </div>
+        </div>
+
+        <!-- 特殊類型 -->
+        <div class="field-group">
+            <label for="favcolor">最喜歡的顏色 (color):</label>
+            <input type="color" id="favcolor" value="#007bff">
+        </div>
+
+        <div class="field-group">
+            <label for="file">上傳頭像 (file):</label>
+            <input type="file" id="file" accept="image/*">
+        </div>
+
+        <div class="field-group">
+            <label for="search">搜尋關鍵字 (search):</label>
+            <input type="search" id="search" placeholder="輸入關鍵字...">
+        </div>
+
+        <!-- 下拉選單與多行文字 -->
+        <div class="field-group">
+            <label for="city">居住城市 (select):</label>
+            <select id="city">
+                <option value="tpe">台北市</option>
+                <option value="tc">台中市</option>
+                <option value="khh">高雄市</option>
+            </select>
+        </div>
+
+        <div class="field-group">
+            <label for="msg">建議事項 (textarea):</label>
+            <textarea id="msg" rows="4"></textarea>
+        </div>
+
+        <button type="submit">提交問卷</button>
+        <button type="reset" style="background:#6c757d;">重設</button>
+    </form>
+
+</body>
+</html>
