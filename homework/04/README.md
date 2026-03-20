@@ -17,6 +17,14 @@ else { console.log("F"); }
 ```
 > **測試結果：**
 > `B`
+## 我的測試結果
+
+ˋˋˋsh
+****
+PS C:\Users\youch\OneDrive\Desktop\HTL\_wp\homework\04> node 10-score.js
+B
+
+ˋˋˋ
 
 ### 2. 偶數產生器 (for)
 * **測試範圍：** 1 到 50
@@ -96,6 +104,15 @@ console.log("購物車總額:", sum);
 ```
 > **測試結果：**
 > `購物車總額: 100`
+
+## 我的測試結果
+
+ˋˋˋsh
+****
+
+PS C:\Users\youch\OneDrive\Desktop\HTL\_wp\homework\04> node 10-score.js
+購物車總額: 100
+ˋˋˋ
 
 ### 9. JSON 資料解析 (json)
 * **資料：** 包含 Alice (active) 與 Bob (inactive) 的 JSON 字串

@@ -1,11 +1,19 @@
-let cart = [
-    { name: "Apple", price: 30 },
-    { name: "Banana", price: 20 },
-    { name: "Cherry", price: 50 }
-];
+let fruitList = ["蘋果", "香蕉", "西瓜", "葡萄", "芒果"];
 
-let sum = 0;
-for (let i = 0; i < cart.length; i++) {
-    sum += cart[i].price;
+function checkFruit(target) {
+    let found = false;
+    for (let i = 0; i < fruitList.length; i++) {
+        if (fruitList[i] === target) {
+            found = true;
+            break;
+        }
+    }
+    if (found) {
+        console.log("找到 " + target + " 了！");
+    } else {
+        console.log(target + " 不在清單內。");
+    }
 }
-console.log("購物車總額:", sum);
+
+checkFruit("西瓜");
+checkFruit("草莓");
