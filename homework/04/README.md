@@ -18,13 +18,11 @@ else { console.log("F"); }
 > **測試結果：**
 > `B`
 ## 我的測試結果
-
 ˋˋˋsh
 ****
 PS C:\Users\youch\OneDrive\Desktop\HTL\_wp\homework\04> node 10-score.js
 B
-
-ˋˋˋ
+```
 
 ### 2. 偶數產生器 (for)
 * **測試範圍：** 1 到 50
@@ -35,6 +33,12 @@ for (let i = 1; i <= 50; i++) {
 ```
 > **測試結果：**
 > `2`, `4`, `6`, `8`, `10` ... (中間略) ... `48`, `50`
+## 我的測試結果
+ˋˋˋsh
+****
+PS C:\Users\youch\OneDrive\Desktop\HTL\_wp\homework\04>node 10-score.js
+2，4，6，8，10，12，14，16，18，20，22，24，26，28，30，32，34，36，38，40，42，44，46，48，50
+ˋˋˋ
 
 ### 3. 倒數計時器 (while)
 * **起始值：** 10
@@ -46,6 +50,13 @@ console.log("Blast off!");
 > **測試結果：**
 > `10`, `9`, `8`, `7`, `6`, `5`, `4`, `3`, `2`, `1`
 > `Blast off!`
+## 我的測試結果
+ˋˋˋsh
+****
+PS C:\Users\youch\OneDrive\Desktop\HTL\_wp\homework\04> node 10-score.js
+10，9，8，7，6，5，4，3，2，1
+Blast off!
+ˋˋˋ
 
 ### 4. 溫度轉換器 (function)
 * **輸入：** 華氏 98.6 度
@@ -55,6 +66,12 @@ console.log(toCelsius(98.6));
 ```
 > **測試結果：**
 > `37`
+## 我的測試結果
+ˋˋˋsh
+****
+PS C:\Users\youch\OneDrive\Desktop\HTL\_wp\homework\04> node 10-score.js
+37
+ˋˋˋ
 
 ### 5. 陣列總和計算 (array + for)
 * **資料：** `[10, 20, 30, 40, 50]`
@@ -66,7 +83,13 @@ console.log("總和為:", total);
 ```
 > **測試結果：**
 > `總和為: 150`
+## 我的測試結果
+ˋˋˋsh
+****
+PS C:\Users\youch\OneDrive\Desktop\HTL\_wp\homework\04> node 10-score.js
+總和為: 150
 
+ˋˋˋ
 ---
 
 ### 6. 物件資訊操作 (object)
@@ -80,6 +103,13 @@ person.sayHello();
 > **測試結果：**
 > `Jasper`
 > `Hi, I am Jasper`
+## 我的測試結果
+ˋˋˋsh
+****
+PS C:\Users\youch\OneDrive\Desktop\HTL\_wp\homework\04> node 10-score.js
+Jasper
+Hi, I am Jasper
+ˋˋˋ
 
 ### 7. 尋找最大值 (function + array)
 * **輸入：** `[5, 2, 9, 1, 7]`
@@ -93,6 +123,12 @@ console.log(findMax([5, 2, 9, 1, 7]));
 ```
 > **測試結果：**
 > `9`
+## 我的測試結果
+ˋˋˋsh
+****
+PS C:\Users\youch\OneDrive\Desktop\HTL\_wp\homework\04> node 10-score.js
+9
+ˋˋˋ
 
 ### 8. 購物清單小計 (array of objects)
 * **資料：** Apple(30), Banana(20), Cherry(50)
@@ -104,12 +140,9 @@ console.log("購物車總額:", sum);
 ```
 > **測試結果：**
 > `購物車總額: 100`
-
 ## 我的測試結果
-
 ˋˋˋsh
 ****
-
 PS C:\Users\youch\OneDrive\Desktop\HTL\_wp\homework\04> node 10-score.js
 購物車總額: 100
 ˋˋˋ
@@ -124,20 +157,41 @@ for (let user of data.users) {
 ```
 > **測試結果：**
 > `活躍使用者: Alice`
+## 我的測試結果
+ˋˋˋsh
+****
+PS C:\Users\youch\OneDrive\Desktop\HTL\_wp\homework\04> node 10-score.js
+活躍使用者: Alice
+ˋˋˋ
 
-### 10. 簡單銀行系統 (object + if)
-* **操作：** 存 500，提 2000（失敗），提 300（成功）
+### 10.水果清單檢查器 (Array + Function + if)
+* **資料：**let fruitList = ["蘋果", "香蕉", "西瓜", "葡萄", "芒果"];
 ```javascript
-let account = { balance: 1000, ... }; // 包含 deposit 與 withdraw 方法
-account.deposit(500);
-account.withdraw(2000);
-account.withdraw(300);
-```
-> **測試結果：**
-> `存入 500，目前餘額: 1500`
-> `餘額不足！提款失敗。`
-> `取出 300，目前餘額: 1200`
+function checkFruit(target) {
+    let found = false;
+    for (let i = 0; i < fruitList.length; i++) {
+        if (fruitList[i] === target) {
+            found = true;
+            break;
+        }
+    }
+    if (found) {
+        console.log("找到 " + target + " 了！");
+    } else {
+        console.log(target + " 不在清單內。");
+    }
+}
 
+checkFruit("西瓜");
+checkFruit("草莓");
+```
+## 我的測試結果
+ˋˋˋsh
+****
+PS C:\Users\youch\OneDrive\Desktop\HTL\_wp\homework\04> node 10-score.js
+找到 西瓜 了！
+草莓 不在清單內。
+ˋˋˋ
 ---
 
 這 10 個練習基本涵蓋了初學者最常碰到的語法情境。**你想試試看把這些邏輯寫成一個簡單的網頁介面（例如按下按鈕才執行計算）嗎？**

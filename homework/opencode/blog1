@@ -1,0 +1,3 @@
+cd "C:\Users\youch\OneDrive\Desktop\HTL\_wp\homework\opencode\blog"
+node server.js
+然後瀏覽器打開 http://localhost:3000

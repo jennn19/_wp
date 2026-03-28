@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>註冊 - 網誌</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --bg-primary: #fafafa;
+      --bg-card: #ffffff;
+      --border-color: #dbdbdb;
+      --text-primary: #262626;
+      --text-secondary: #8e8e8e;
+      --accent: #0095f6;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 350px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .logo {
+      font-size: 32px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+    }
+    
+    .subtitle {
+      text-align: center;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+    
+    .form-group {
+      margin-bottom: 12px;
+    }
+    
+    .form-group input {
+      width: 100%;
+      padding: 10px 12px;
+      background: #fafafa;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    
+    .form-group input:focus {
+      border-color: var(--accent);
+    }
+    
+    .btn-primary {
+      width: 100%;
+      padding: 10px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    
+    .btn-primary:hover { opacity: 0.8; }
+    
+    .error {
+      background: #fee2e2;
+      color: #dc2626;
+      padding: 10px 12px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+      font-size: 14px;
+      text-align: center;
+    }
+    
+    .links {
+      text-align: center;
+      margin-top: 20px;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+    
+    .links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .links a:hover { text-decoration: underline; }
+    
+    .back-home {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: var(--text-primary);
+      font-size: 24px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <a href="/" class="back-home">←</a>
+  <div class="container">
+    <h1 class="logo">網誌</h1>
+    <p class="subtitle">註冊以開始分享</p>
+    
+    <% if (error) { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+    
+    <form action="/register" method="POST">
+      <div class="form-group">
+        <input type="text" name="username" placeholder="使用者名稱" required autocomplete="username">
+      </div>
+      <div class="form-group">
+        <input type="password" name="password" placeholder="密碼（至少4個字元）" required autocomplete="new-password">
+      </div>
+      <button type="submit" class="btn-primary">註冊</button>
+    </form>
+    
+    <div class="links">
+      已經有帳號了？ <a href="/login">登入</a>
+    </div>
+  </div>
+</body>
+</html>
