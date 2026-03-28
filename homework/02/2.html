@@ -2,117 +2,180 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>全功能表單樣式展示</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>饗宴評論 - 用餐體驗調查</title>
     <style>
-        body { font-family: sans-serif; line-height: 1.6; max-width: 600px; margin: 20px auto; padding: 20px; background: #f4f4f9; }
-        form { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .field-group { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
-        label { display: block; font-weight: bold; margin-bottom: 5px; }
-        input[type="text"], input[type="email"], input[type="password"], input[type="number"], 
-        input[type="tel"], input[type="url"], select, textarea {
-            width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;
+        :root {
+            --brand-orange: #e67e22;
+            --brand-red: #d35400;
+            --bg-cream: #fdfaf6;
+            --text-dark: #2c3e50;
         }
-        .inline-group { display: flex; align-items: center; gap: 10px; }
-        .inline-group label { display: inline; font-weight: normal; margin: 0; }
-        button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
-        button:hover { background: #0056b3; }
+
+        body {
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            background-color: var(--bg-cream);
+            background-image: radial-gradient(#e67e2222 1px, transparent 1px);
+            background-size: 20px 20px;
+            margin: 0;
+            padding: 40px 20px;
+            color: var(--text-dark);
+        }
+
+        .survey-card {
+            max-width: 650px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-top: 8px solid var(--brand-orange);
+        }
+
+        .header {
+            padding: 30px;
+            text-align: center;
+            background: #fff;
+        }
+
+        .header h1 { margin: 0; color: var(--brand-red); font-size: 24px; }
+        .header p { color: #7f8c8d; margin-top: 10px; }
+
+        form { padding: 0 30px 30px; }
+
+        .section-title {
+            border-left: 4px solid var(--brand-orange);
+            padding-left: 10px;
+            margin: 25px 0 15px;
+            font-weight: bold;
+            color: var(--brand-red);
+        }
+
+        .input-group { margin-bottom: 20px; }
+
+        label { display: block; margin-bottom: 8px; font-weight: 500; }
+
+        /* 輸入框樣式 */
+        input[type="text"], input[type="date"], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        input:focus { border-color: var(--brand-orange); outline: none; box-shadow: 0 0 5px rgba(230,126,34,0.2); }
+
+        /* 評分星星樣式 (簡化版) */
+        .rating-container {
+            display: flex;
+            justify-content: space-between;
+            background: #fff9f4;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .rating-item { text-align: center; flex: 1; }
+
+        /* 按鈕樣式 */
+        .submit-btn {
+            background: var(--brand-orange);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 18px;
+            width: 100%;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover { background: var(--brand-red); transform: scale(1.02); }
+
+        /* 標籤雲樣式 */
+        .checkbox-group { display: flex; flex-wrap: wrap; gap: 10px; }
+        .checkbox-tag {
+            background: #eee;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+        input[type="checkbox"] { display: none; }
+        input[type="checkbox"]:checked + .checkbox-tag {
+            background: var(--brand-orange);
+            color: white;
+        }
     </style>
 </head>
 <body>
 
-    <h2>問卷調查與樣式展示</h2>
-    
-    <form action="#">
-        <!-- 文字與基本輸入 -->
-        <div class="field-group">
-            <label for="name">姓名 (text):</label>
-            <input type="text" id="name" placeholder="請輸入姓名" required>
-        </div>
+<div class="survey-card">
+    <div class="header">
+        <h1>🍽️ 用餐體驗滿意度調查</h1>
+        <p>感謝您的光臨，您的回饋是我們進步的動力。</p>
+    </div>
 
-        <div class="field-group">
-            <label for="email">電子郵件 (email):</label>
-            <input type="email" id="email" placeholder="example@mail.com">
-        </div>
-
-        <div class="field-group">
-            <label for="pwd">密碼 (password):</label>
-            <input type="password" id="pwd">
-        </div>
-
-        <!-- 數字與範圍 -->
-        <div class="field-group">
-            <label for="age">年齡 (number):</label>
-            <input type="number" id="age" min="0" max="120" value="25">
-        </div>
-
-        <div class="field-group">
-            <label for="satisfaction">滿意度 (range):</label>
-            <input type="range" id="satisfaction" min="0" max="100">
-        </div>
-
-        <!-- 日期與時間 -->
-        <div class="field-group">
-            <label for="bday">生日 (date):</label>
-            <input type="date" id="bday">
-        </div>
-
-        <div class="field-group">
-            <label for="meeting">預約時間 (datetime-local):</label>
-            <input type="datetime-local" id="meeting">
-        </div>
-
-        <!-- 選擇類型 -->
-        <div class="field-group">
-            <label>性別 (radio):</label>
-            <div class="inline-group">
-                <input type="radio" id="m" name="gender" value="m"><label for="m">男</label>
-                <input type="radio" id="f" name="gender" value="f"><label for="f">女</label>
+    <form>
+        <div class="section-title">基本資訊</div>
+        <div style="display: flex; gap: 15px;">
+            <div class="input-group" style="flex: 1;">
+                <label>用餐日期</label>
+                <input type="date" required>
+            </div>
+            <div class="input-group" style="flex: 1;">
+                <label>用餐時段</label>
+                <select>
+                    <option>午餐</option>
+                    <option>下午茶</option>
+                    <option>晚餐</option>
+                </select>
             </div>
         </div>
 
-        <div class="field-group">
-            <label>興趣 (checkbox):</label>
-            <div class="inline-group">
-                <input type="checkbox" id="c1"><label for="c1">運動</label>
-                <input type="checkbox" id="c2"><label for="c2">閱讀</label>
-                <input type="checkbox" id="c3"><label for="c3">旅遊</label>
+        <div class="section-title">各項評分</div>
+        <div class="input-group">
+            <label>1. 餐點口味滿意度 (1-5分)</label>
+            <div class="rating-container">
+                <label><input type="radio" name="food" value="1"> 1</label>
+                <label><input type="radio" name="food" value="2"> 2</label>
+                <label><input type="radio" name="food" value="3" checked> 3</label>
+                <label><input type="radio" name="food" value="4"> 4</label>
+                <label><input type="radio" name="food" value="5"> 5</label>
             </div>
         </div>
 
-        <!-- 特殊類型 -->
-        <div class="field-group">
-            <label for="favcolor">最喜歡的顏色 (color):</label>
-            <input type="color" id="favcolor" value="#007bff">
+        <div class="input-group">
+            <label>2. 服務人員態度</label>
+            <div class="rating-container">
+                <label><input type="radio" name="service" value="1"> 差</label>
+                <label><input type="radio" name="service" value="2"> 普通</label>
+                <label><input type="radio" name="service" value="3" checked> 良好</label>
+                <label><input type="radio" name="service" value="4"> 優異</label>
+            </div>
         </div>
 
-        <div class="field-group">
-            <label for="file">上傳頭像 (file):</label>
-            <input type="file" id="file" accept="image/*">
+        <div class="section-title">值得推薦的部分</div>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="fav" value="1"><span class="checkbox-tag">食材新鮮</span></label>
+            <label><input type="checkbox" name="fav" value="2"><span class="checkbox-tag">擺盤精緻</span></label>
+            <label><input type="checkbox" name="fav" value="3"><span class="checkbox-tag">上菜快速</span></label>
+            <label><input type="checkbox" name="fav" value="4"><span class="checkbox-tag">環境整潔</span></label>
+            <label><input type="checkbox" name="fav" value="5"><span class="checkbox-tag">CP值高</span></label>
         </div>
 
-        <div class="field-group">
-            <label for="search">搜尋關鍵字 (search):</label>
-            <input type="search" id="search" placeholder="輸入關鍵字...">
+        <div class="section-title">建議與評論</div>
+        <div class="input-group">
+            <textarea rows="4" placeholder="請告訴我們哪些地方可以做得更好..."></textarea>
         </div>
 
-        <!-- 下拉選單與多行文字 -->
-        <div class="field-group">
-            <label for="city">居住城市 (select):</label>
-            <select id="city">
-                <option value="tpe">台北市</option>
-                <option value="tc">台中市</option>
-                <option value="khh">高雄市</option>
-            </select>
-        </div>
-
-        <div class="field-group">
-            <label for="msg">建議事項 (textarea):</label>
-            <textarea id="msg" rows="4"></textarea>
-        </div>
-
-        <button type="submit">提交問卷</button>
-        <button type="reset" style="background:#6c757d;">重設</button>
+        <button type="submit" class="submit-btn">提交回饋，領取優惠券 🎁</button>
     </form>
+</div>
 
 </body>
 </html>
