@@ -1,6 +1,6 @@
 # 社群平台 (Social App)
 
-全程使用AI
+全程使用AI(OPENCODE)，
 一個簡單的社群軟體專案，使用 Next.js App Router。
 
 ## 功能
