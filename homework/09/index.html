@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>網頁設計作業整理平台</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --accent2: #e74c3c;
+            --bg: #f0f2f5;
+            --card-bg: #fff;
+            --text: #333;
+            --text-light: #7f8c8d;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Microsoft JhengHei', 'PingFang TC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary), #1a252f);
+            border-radius: var(--radius);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        header h1 { font-size: 2.2em; margin-bottom: 8px; letter-spacing: 2px; }
+        header p { opacity: 0.85; font-size: 1.05em; }
+        header .links { margin-top: 18px; }
+        header .links a {
+            color: white;
+            text-decoration: none;
+            background: rgba(255,255,255,0.15);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        header .links a:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        .stat-card {
+            background: var(--card-bg);
+            padding: 20px 35px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            min-width: 130px;
+        }
+        .stat-card .num { font-size: 2em; font-weight: 700; color: var(--accent); }
+        .stat-card .label { font-size: 0.85em; color: var(--text-light); margin-top: 4px; }
+
+        .section-title {
+            font-size: 1.3em;
+            margin: 40px 0 20px;
+            padding-left: 14px;
+            border-left: 4px solid var(--accent);
+            color: var(--primary);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+        .card-body { padding: 22px; }
+        .card .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            font-size: 0.75em;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .card h3 { font-size: 1.15em; margin-bottom: 8px; color: var(--primary); }
+        .card p { font-size: 0.88em; color: var(--text-light); margin-bottom: 14px; line-height: 1.5; }
+        .card .tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+        .card .tech span {
+            background: #ecf0f1;
+            color: #555;
+            font-size: 0.75em;
+            padding: 2px 10px;
+            border-radius: 10px;
+        }
+        .card .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            padding: 7px 18px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            transition: 0.2s;
+            margin-right: 6px;
+            margin-bottom: 4px;
+        }
+        .card .btn:hover { background: #2980b9; }
+        .card .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+        .card .btn-outline:hover { background: var(--accent); color: white; }
+
+        .card.code .badge { background: #27ae60; }
+        .card.server .badge { background: #8e44ad; }
+        .card.html .badge { background: #e67e22; }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 25px;
+            color: var(--text-light);
+            font-size: 0.85em;
+            border-top: 1px solid #ddd;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.6em; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 網頁設計作業整理平台</h1>
+            <p>陳宥蓁 · 國立金門大學資訊工程系</p>
+            <div class="links">
+                <a href="https://github.com/jennn19/_wp" target="_blank">🔗 GitHub 儲存庫</a>
+            </div>
+        </header>
+
+        <div class="stats">
+            <div class="stat-card"><div class="num">10</div><div class="label">作業總數</div></div>
+            <div class="stat-card"><div class="num">4</div><div class="label">後端語言</div></div>
+            <div class="stat-card"><div class="num">3</div><div class="label">前端框架</div></div>
+        </div>
+
+        <div class="section-title">🌐 前端網頁作業</div>
+        <div class="grid">
+            <div class="card html">
+                <div class="card-body">
+                    <span class="badge">HTML + CSS</span>
+                    <h3>作業 01 — 個人介紹網頁</h3>
+                    <p>Flexbox 雙欄履歷頁面，含聯絡資訊、學歷背景與興趣標籤，支援行動裝置 RWD。</p>
+                    <a class="btn" href="../01/aboutme.html" target="_blank">開啟網頁</a>
+                    <a class="btn btn-outline" href="https://github.com/jennn19/_wp/tree/main/homework/01" target="_blank">原始碼</a>
+                </div>
+            </div>
+
+            <div class="card html">
+                <div class="card-body">
+                    <span class="badge">HTML + CSS</span>
+                    <h3>作業 02 — 餐廳滿意度調查表</h3>
+                    <p>完整表單設計：日期選擇、評分單選、複選標籤雲、文字評論，自訂品牌色彩。</p>
+                    <a class="btn" href="../02/2.html" target="_blank">開啟網頁</a>
+                    <a class="btn btn-outline" href="https://github.com/jennn19/_wp/tree/main/homework/02" target="_blank">原始碼</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">⚛️ 前端框架專案</div>
+        <div class="grid">
+            <div class="card">
+                <div class="card-body">
+                    <span class="badge">Next.js + React + TS</span>
+                    <h3>作業 00 — Next.js 前端應用</h3>
+                    <p>使用 create-next-app 建置，App Router 架構，TypeScript + Tailwind CSS 風格。</p>
+                    <div class="tech">
+                        <span>Next.js 16</span><span>React 19</span><span>TypeScript</span><span>Tailwind</span>
+                    </div>
+                    <a class="btn" href="../00/frontend/src/app/page.tsx" target="_blank">檢視頁面</a>
+                    <a class="btn btn-outline" href="https://github.com/jennn19/_wp/tree/main/homework/00" target="_blank">原始碼</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <span class="badge">Next.js + React + TS</span>
+                    <h3>作業 08 — 社群平台前端</h3>
+                    <p>社群平台 UI：發表貼文、按讚（含雙擊愛心動畫）、留言系統，支援多後端切換。</p>
+                    <div class="tech">
+                        <span>Next.js 16</span><span>React 19</span><span>Tailwind</span>
+                    </div>
+                    <a class="btn" href="../08/social-app/src/app/page.tsx" target="_blank">檢視頁面</a>
+                    <a class="btn btn-outline" href="https://github.com/jennn19/_wp/tree/main/homework/08/social-app" target="_blank">原始碼</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">🖥️ 後端伺服器實作</div>
+        <div class="grid">
+            <div class="card server">
+                <div class="card-body">
+                    <span class="badge">Node.js / Express</span>
+                    <h3>作業 08 — Node.js 後端</h3>
+                    <p>Express RESTful API，提供貼文 CRUD、按讚、留言等功能，支援 CORS。</p>
+                    <a class="btn" href="../08/server-node/index.js" target="_blank">檢視程式碼</a>
+                    <a class="btn btn-outline" href="https://github.com/jennn19/_wp/tree/main/homework/08/server-node" target="_blank">原始碼</a>
+                </div>
+            </div>
+
+            <div class="card server">
+                <div class="card-body">
+                    <span class="badge">Python / FastAPI</span>
+                    <h3>作業 08 — FastAPI 後端</h3>
+                    <p>Python FastAPI 非同步後端，提供相同 RESTful API 介面。</p>
+                    <div class="tech"><span>FastAPI</span><span>Python</span><span>Uvicorn</span></div>
+                    <a class="btn" href="../08/server-fastapi/main.py" target="_blank">檢視程式碼</a>
+                    <a class="btn btn-outline" href="https://github.com/jennn19/_wp/tree/main/homework/08/server-fastapi" target="_blank">原始碼</a>
+                </div>
+            </div>
+
+            <div class="card server">
+                <div class="card-body">
+                    <span class="badge">Rust / Actix-web</span>
+                    <h3>作業 08 — Rust 後端</h3>
+                    <p>使用 Rust Actix-web 框架實作高效能後端伺服器。</p>
+                    <div class="tech"><span>Rust</span><span>Actix-web</span></div>
+                    <a class="btn" href="../08/server-rust/src" target="_blank">檢視程式碼</a>
+                    <a class="btn btn-outline" href="https://github.com/jennn19/_wp/tree/main/homework/08/server-rust" target="_blank">原始碼</a>
+                </div>
+            </div>
+
+            <div class="card server">
+                <div class="card-body">
+                    <span class="badge">Node.js / Express + SQLite</span>
+                    <h3>opencode — 部落格系統</h3>
+                    <p>完整部落格後端，Node.js + Express + SQLite 資料庫，支援文章 CRUD。</p>
+                    <div class="tech"><span>Express</span><span>SQLite</span></div>
+                    <a class="btn" href="../opencode/blog/server.js" target="_blank">檢視程式碼</a>
+                    <a class="btn btn-outline" href="https://github.com/jennn19/_wp/tree/main/homework/opencode/blog" target="_blank">原始碼</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">📝 JavaScript 語法練習</div>
+        <div class="grid">
+            <div class="card code">
+                <div class="card-body">
+                    <span class="badge">JavaScript</span>
+                    <h3>作業 04 — JS 基礎 10 題</h3>
+                    <p>if 判斷、for/while 迴圈、function、array、object、JSON 解析。</p>
+                    <div class="tech"><span>if</span><span>for</span><span>while</span><span>function</span><span>object</span><span>JSON</span></div>
+                    <a class="btn" href="../04/10-score.js" target="_blank">檢視程式碼</a>
+                    <a class="btn btn-outline" href="../04/README.md" target="_blank">說明文件</a>
+                </div>
+            </div>
+
+            <div class="card code">
+                <div class="card-body">
+                    <span class="badge">JavaScript</span>
+                    <h3>作業 05 — 回呼函式</h3>
+                    <p>高階函式接收 callback，進行加法與減法運算練習。</p>
+                    <a class="btn" href="../05/1.js" target="_blank">檢視程式碼</a>
+                </div>
+            </div>
+
+            <div class="card code">
+                <div class="card-body">
+                    <span class="badge">JavaScript</span>
+                    <h3>作業 07 — 物件操作</h3>
+                    <p>物件屬性存取練習：點記法與括號記法操作 post 物件。</p>
+                    <a class="btn" href="../07/10.js" target="_blank">檢視程式碼</a>
+                </div>
+            </div>
+
+            <div class="card code">
+                <div class="card-body">
+                    <span class="badge">JavaScript</span>
+                    <h3>JS 入門測試</h3>
+                    <p>最基本的 JavaScript 測試：console.log 輸出 Hello。</p>
+                    <a class="btn" href="../js/hello.js" target="_blank">檢視程式碼</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>國立金門大學資訊工程系 · 網頁設計課程 · 114 學年下學期</p>
+            <p style="margin-top:6px;">GitHub: <a href="https://github.com/jennn19/_wp" target="_blank" style="color:var(--accent);">github.com/jennn19/_wp</a></p>
+        </footer>
+    </div>
+</body>
+</html>
