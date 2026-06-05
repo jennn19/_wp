@@ -3,7 +3,7 @@
 > **學生：** 陳宥蓁（學號末兩碼：19）
 >
 > **GitHub 連結：** https://github.com/jennn19/_wp
-
+全程使用AI(OPENCODE)
 ---
 
 ## 作業列表（不含 060）
