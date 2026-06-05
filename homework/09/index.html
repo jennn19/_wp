@@ -4,309 +4,279 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>網頁設計作業整理平台</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #2c3e50;
-            --accent: #3498db;
-            --bg: #f0f2f5;
-            --card-bg: #fff;
-            --text: #333;
-            --text-light: #7f8c8d;
-            --shadow: 0 4px 20px rgba(0,0,0,0.08);
-            --radius: 12px;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', 'Microsoft JhengHei', 'PingFang TC', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            padding: 40px 20px;
-        }
-        .container { max-width: 1100px; margin: 0 auto; }
-
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, var(--primary), #1a252f);
-            border-radius: var(--radius);
-            color: white;
-            box-shadow: var(--shadow);
-        }
-        header h1 { font-size: 2.2em; margin-bottom: 8px; letter-spacing: 2px; }
-        header p { opacity: 0.85; font-size: 1.05em; }
-        header .links { margin-top: 18px; }
-        header .links a {
-            color: white;
-            text-decoration: none;
-            background: rgba(255,255,255,0.15);
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            transition: 0.3s;
-            display: inline-block;
-        }
-        header .links a:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
-
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-        .stat-card {
-            background: var(--card-bg);
-            padding: 20px 35px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            text-align: center;
-            min-width: 130px;
-        }
-        .stat-card .num { font-size: 2em; font-weight: 700; color: var(--accent); }
-        .stat-card .label { font-size: 0.85em; color: var(--text-light); margin-top: 4px; }
-
-        .section-title {
-            font-size: 1.3em;
-            margin: 40px 0 20px;
-            padding-left: 14px;
-            border-left: 4px solid var(--accent);
-            color: var(--primary);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            transition: transform 0.25s, box-shadow 0.25s;
-        }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
-        .card-body { padding: 22px; }
-        .card .badge {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            font-size: 0.75em;
-            padding: 3px 12px;
-            border-radius: 12px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        .card h3 { font-size: 1.15em; margin-bottom: 8px; color: var(--primary); }
-        .card p { font-size: 0.88em; color: var(--text-light); margin-bottom: 14px; line-height: 1.5; }
-        .card .tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 14px;
-        }
-        .card .tech span {
-            background: #ecf0f1;
-            color: #555;
-            font-size: 0.75em;
-            padding: 2px 10px;
-            border-radius: 10px;
-        }
-        .card .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            text-decoration: none;
-            padding: 7px 18px;
-            border-radius: 6px;
-            font-size: 0.85em;
-            transition: 0.2s;
-            margin-right: 6px;
-            margin-bottom: 4px;
-        }
-        .card .btn:hover { background: #2980b9; }
-
-        .card.code .badge { background: #27ae60; }
-        .card.server .badge { background: #8e44ad; }
-        .card.html .badge { background: #e67e22; }
-
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            padding: 25px;
-            color: var(--text-light);
-            font-size: 0.85em;
-            border-top: 1px solid #ddd;
-        }
-
-        @media (max-width: 600px) {
-            header h1 { font-size: 1.6em; }
-            .grid { grid-template-columns: 1fr; }
+            font-family: 'Noto Sans TC', sans-serif;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1>📚 網頁設計作業整理平台</h1>
-            <p>陳宥蓁 · 國立金門大學資訊工程系</p>
-            <div class="links">
-                <a href="https://github.com/jennn19/_wp" target="_blank">🔗 GitHub 儲存庫</a>
-            </div>
-        </header>
+<body class="bg-gray-50 text-gray-800 min-h-screen">
 
-        <div class="stats">
-            <div class="stat-card"><div class="num">10</div><div class="label">作業總數</div></div>
-            <div class="stat-card"><div class="num">4</div><div class="label">後端語言</div></div>
-            <div class="stat-card"><div class="num">3</div><div class="label">前端框架</div></div>
+    <header class="bg-slate-900 text-white py-12 px-6 shadow-md text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <h1 class="text-3xl md:text-4xl font-bold tracking-wide mb-3 flex items-center justify-center gap-3">
+                📚 網頁設計作業整理平台
+            </h1>
+            <p class="text-slate-400 text-lg mb-6">陳宥蓁 · 國立金門大學資訊工程系</p>
+            <a href="https://github.com/jennn19/_wp" target="_blank" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 transition px-5 py-2.5 rounded-full text-sm font-medium border border-slate-700 shadow-inner">
+                🔗 GitHub 儲存庫
+            </a>
         </div>
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl"></div>
+    </header>
 
-        <div class="section-title">🌐 前端網頁作業</div>
-        <div class="grid">
-            <div class="card html">
-                <div class="card-body">
-                    <span class="badge">HTML + CSS</span>
-                    <h3>作業 01 — 個人介紹網頁</h3>
-                    <p>Flexbox 雙欄履歷頁面，含聯絡資訊、學歷背景與興趣標籤，支援行動裝置 RWD。</p>
-                    <a class="btn" href="../01/aboutme.html" target="_blank">開啟網頁</a>
-                    <a class="btn" href="https://github.com/jennn19/_wp/tree/main/homework/01" target="_blank">原始碼</a>
-                </div>
+    <main class="max-w-6xl mx-auto px-4 py-12 -mt-8">
+        
+        <section class="grid grid-cols-3 gap-4 md:gap-6 max-w-2xl mx-auto mb-16 bg-white p-6 rounded-2xl shadow-xl border border-slate-100">
+            <div class="text-center p-3">
+                <span class="block text-3xl md:text-4xl font-black text-blue-600 mb-1">12</span>
+                <span class="text-xs md:text-sm font-medium text-gray-500 uppercase tracking-wider">作業總數</span>
             </div>
-
-            <div class="card html">
-                <div class="card-body">
-                    <span class="badge">HTML + CSS</span>
-                    <h3>作業 02 — 餐廳滿意度調查表</h3>
-                    <p>完整表單設計：日期選擇、評分單選、複選標籤雲、文字評論，自訂品牌色彩。</p>
-                    <a class="btn" href="../02/2.html" target="_blank">開啟網頁</a>
-                    <a class="btn" href="https://github.com/jennn19/_wp/tree/main/homework/02" target="_blank">原始碼</a>
-                </div>
+            <div class="text-center p-3 border-x border-gray-100">
+                <span class="block text-3xl md:text-4xl font-black text-emerald-600 mb-1">3</span>
+                <span class="text-xs md:text-sm font-medium text-gray-500 uppercase tracking-wider">後端語言</span>
             </div>
-        </div>
+            <div class="text-center p-3">
+                <span class="block text-3xl md:text-4xl font-black text-purple-600 mb-1">3</span>
+                <span class="text-xs md:text-sm font-medium text-gray-500 uppercase tracking-wider">前端框架</span>
+            </div>
+        </section>
 
-        <div class="section-title">⚛️ 前端框架專案</div>
-        <div class="grid">
-            <div class="card">
-                <div class="card-body">
-                    <span class="badge">Next.js + React + TS</span>
-                    <h3>作業 00 — Next.js 前端應用</h3>
-                    <p>使用 create-next-app 建置，App Router 架構，TypeScript + Tailwind CSS 風格。</p>
-                    <div class="tech">
-                        <span>Next.js 16</span><span>React 19</span><span>TypeScript</span><span>Tailwind</span>
+        <section class="mb-16">
+            <div class="flex items-center gap-3 border-l-4 border-blue-500 pl-4 mb-8">
+                <span class="text-2xl">🌐</span>
+                <h2 class="text-2xl font-bold tracking-tight text-gray-900">前端網頁作業</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-2.5 py-1 text-xs font-semibold rounded-md bg-orange-50 text-orange-600 border border-orange-200">HTML + CSS</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">作業 01 — 個人介紹網頁</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">Flexbox 雙欄履歷頁面，含聯絡資訊、學歷背景與興趣標籤，支援行動裝置 RWD。</p>
                     </div>
-                    <a class="btn" href="../00/frontend/src/app/page.tsx" target="_blank">檢視頁面</a>
-                    <a class="btn" href="https://github.com/jennn19/_wp/tree/main/homework/00" target="_blank">原始碼</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <span class="badge">Next.js + React + TS</span>
-                    <h3>作業 08 — 社群平台前端</h3>
-                    <p>社群平台 UI：發表貼文、按讚（含雙擊愛心動畫）、留言系統，支援多後端切換。</p>
-                    <div class="tech">
-                        <span>Next.js 16</span><span>React 19</span><span>Tailwind</span>
+                    <div class="flex gap-3">
+                        <a href="https://jennn19.github.io/_wp/homework/01/index.html" target="_blank" class="flex-1 text-center bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm font-medium py-2 rounded-lg transition">開啟網頁</a>
+                        <a href="https://github.com/jennn19/_wp/tree/main/homework/01" target="_blank" class="flex-1 text-center bg-gray-50 hover:bg-gray-100 text-gray-700 text-sm font-medium py-2 rounded-lg transition">原始碼</a>
                     </div>
-                    <a class="btn" href="../08/social-app/src/app/page.tsx" target="_blank">檢視頁面</a>
-                    <a class="btn" href="https://github.com/jennn19/_wp/tree/main/homework/08/social-app" target="_blank">原始碼</a>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-2.5 py-1 text-xs font-semibold rounded-md bg-purple-50 text-purple-600 border border-purple-200">⚛️ 前端框架專案</span>
+                            <span class="px-2.5 py-1 text-xs font-semibold rounded-md bg-slate-100 text-slate-600">Next.js + React + TS</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">作業 02 — 餐廳滿意度調查表</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">完整表單設計：日期選擇、評分單選、複選標籤雲、文字評論，自訂品牌色彩。</p>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://jennn19.github.io/_wp/homework/02/index.html" target="_blank" class="flex-1 text-center bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm font-medium py-2 rounded-lg transition">開啟網頁</a>
+                        <a href="https://github.com/jennn19/_wp/tree/main/homework/02" target="_blank" class="flex-1 text-center bg-gray-50 hover:bg-gray-100 text-gray-700 text-sm font-medium py-2 rounded-lg transition">原始碼</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-2.5 py-1 text-xs font-semibold rounded-md bg-purple-50 text-purple-600 border border-purple-200">⚛️ 前端框架專案</span>
+                            <span class="px-2.5 py-1 text-xs font-semibold rounded-md bg-slate-100 text-slate-600">Next.js + React + TS</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">作業 00 — Next.js 前端應用</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">使用 create-next-app 建置，App Router 架構，TypeScript + Tailwind CSS 風格。</p>
+                        <div class="flex flex-wrap gap-1.5 mb-6">
+                            <span class="bg-slate-100 text-slate-600 text-[11px] px-2 py-0.5 rounded">Next.js 16</span>
+                            <span class="bg-slate-100 text-slate-600 text-[11px] px-2 py-0.5 rounded">React 19</span>
+                            <span class="bg-slate-100 text-slate-600 text-[11px] px-2 py-0.5 rounded">TypeScript</span>
+                            <span class="bg-slate-100 text-slate-600 text-[11px] px-2 py-0.5 rounded">Tailwind</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://jennn19.github.io/_wp/homework/00/index.html" target="_blank" class="flex-1 text-center bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm font-medium py-2 rounded-lg transition">檢視頁面</a>
+                        <a href="https://github.com/jennn19/_wp/tree/main/homework/00" target="_blank" class="flex-1 text-center bg-gray-50 hover:bg-gray-100 text-gray-700 text-sm font-medium py-2 rounded-lg transition">原始碼</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-2.5 py-1 text-xs font-semibold rounded-md bg-purple-50 text-purple-600 border border-purple-200">⚛️ 前端框架專案</span>
+                            <span class="px-2.5 py-1 text-xs font-semibold rounded-md bg-slate-100 text-slate-600">Next.js + React + TS</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">作業 08 — 社群平台前端</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">社群平台 UI：發表貼文、按讚（含雙擊愛心動畫）、留言系統，支援多後端切換。</p>
+                        <div class="flex flex-wrap gap-1.5 mb-6">
+                            <span class="bg-slate-100 text-slate-600 text-[11px] px-2 py-0.5 rounded">Next.js 16</span>
+                            <span class="bg-slate-100 text-slate-600 text-[11px] px-2 py-0.5 rounded">React 19</span>
+                            <span class="bg-slate-100 text-slate-600 text-[11px] px-2 py-0.5 rounded">Tailwind</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://jennn19.github.io/_wp/homework/08/index.html" target="_blank" class="flex-1 text-center bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm font-medium py-2 rounded-lg transition">檢視頁面</a>
+                        <a href="https://github.com/jennn19/_wp/tree/main/homework/08" target="_blank" class="flex-1 text-center bg-gray-50 hover:bg-gray-100 text-gray-700 text-sm font-medium py-2 rounded-lg transition">原始碼</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="section-title">🖥️ 後端伺服器實作</div>
-        <div class="grid">
-            <div class="card server">
-                <div class="card-body">
-                    <span class="badge">Node.js / Express</span>
-                    <h3>作業 08 — Node.js 後端</h3>
-                    <p>Express RESTful API，提供貼文 CRUD、按讚、留言等功能，支援 CORS。</p>
-                    <a class="btn" href="../08/server-node/index.js" target="_blank">檢視程式碼</a>
-                    <a class="btn" href="https://github.com/jennn19/_wp/tree/main/homework/08/server-node" target="_blank">資料夾</a>
+        <section class="mb-16">
+            <div class="flex items-center gap-3 border-l-4 border-emerald-500 pl-4 mb-8">
+                <span class="text-2xl">🖥️</span>
+                <h2 class="text-2xl font-bold tracking-tight text-gray-900">後端伺服器實作</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-2.5 py-1 text-xs font-semibold rounded-md bg-emerald-50 text-emerald-600 border border-emerald-200">Node.js / Express</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">作業 08 — Node.js 後端</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">Express RESTful API，提供貼文 CRUD、按讚、留言等功能，支援 CORS。</p>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://github.com/jennn19/_wp/blob/main/homework/08/server-node.js" target="_blank" class="flex-1 text-center bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-sm font-medium py-2 rounded-lg transition">檢視程式碼</a>
+                        <a href="https://github.com/jennn19/_wp/tree/main/homework/08" target="_blank" class="flex-1 text-center bg-gray-50 hover:bg-gray-100 text-gray-700 text-sm font-medium py-2 rounded-lg transition">資料夾</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-2.5 py-1 text-xs font-semibold rounded-md bg-emerald-50 text-emerald-600 border border-emerald-200">Python / FastAPI</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">作業 08 — FastAPI 後端</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Python FastAPI 非同步後端，提供相同 RESTful API 介面。</p>
+                        <div class="flex flex-wrap gap-1.5 mb-6">
+                            <span class="bg-slate-100 text-slate-600 text-[11px] px-2 py-0.5 rounded">FastAPI</span>
+                            <span class="bg-slate-100 text-slate-600 text-[11px] px-2 py-0.5 rounded">Python</span>
+                            <span class="bg-slate-100 text-slate-600 text-[11px] px-2 py-0.5 rounded">Uvicorn</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://github.com/jennn19/_wp/blob/main/homework/08/server-fastapi.py" target="_blank" class="flex-1 text-center bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-sm font-medium py-2 rounded-lg transition">檢視程式碼</a>
+                        <a href="https://github.com/jennn19/_wp/tree/main/homework/08" target="_blank" class="flex-1 text-center bg-gray-50 hover:bg-gray-100 text-gray-700 text-sm font-medium py-2 rounded-lg transition">資料夾</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-2.5 py-1 text-xs font-semibold rounded-md bg-emerald-50 text-emerald-600 border border-emerald-200">Rust / Actix-web</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">作業 08 — Rust 後端</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">使用 Rust Actix-web 框架實作高效能後端伺服器。</p>
+                        <div class="flex flex-wrap gap-1.5 mb-6">
+                            <span class="bg-slate-100 text-slate-600 text-[11px] px-2 py-0.5 rounded">Rust</span>
+                            <span class="bg-slate-100 text-slate-600 text-[11px] px-2 py-0.5 rounded">Actix-web</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://github.com/jennn19/_wp/tree/main/homework/08/server-rust" target="_blank" class="flex-1 text-center bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-sm font-medium py-2 rounded-lg transition">檢視程式碼</a>
+                        <a href="https://github.com/jennn19/_wp/tree/main/homework/08" target="_blank" class="flex-1 text-center bg-gray-50 hover:bg-gray-100 text-gray-700 text-sm font-medium py-2 rounded-lg transition">資料夾</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-2.5 py-1 text-xs font-semibold rounded-md bg-emerald-50 text-emerald-600 border border-emerald-200">Node.js / Express + SQLite</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">opencode — 部落格系統</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">完整部落格後端，Node.js + Express + SQLite 資料庫，支援文章 CRUD。</p>
+                        <div class="flex flex-wrap gap-1.5 mb-6">
+                            <span class="bg-slate-100 text-slate-600 text-[11px] px-2 py-0.5 rounded">Express</span>
+                            <span class="bg-slate-100 text-slate-600 text-[11px] px-2 py-0.5 rounded">SQLite</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://github.com/jennn19/_wp/tree/main/opencode" target="_blank" class="flex-1 text-center bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-sm font-medium py-2 rounded-lg transition">檢視程式碼</a>
+                        <a href="https://github.com/jennn19/_wp/tree/main/opencode" target="_blank" class="flex-1 text-center bg-gray-50 hover:bg-gray-100 text-gray-700 text-sm font-medium py-2 rounded-lg transition">資料夾</a>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="card server">
-                <div class="card-body">
-                    <span class="badge">Python / FastAPI</span>
-                    <h3>作業 08 — FastAPI 後端</h3>
-                    <p>Python FastAPI 非同步後端，提供相同 RESTful API 介面。</p>
-                    <div class="tech"><span>FastAPI</span><span>Python</span><span>Uvicorn</span></div>
-                    <a class="btn" href="../08/server-fastapi/main.py" target="_blank">檢視程式碼</a>
-                    <a class="btn" href="https://github.com/jennn19/_wp/tree/main/homework/08/server-fastapi" target="_blank">資料夾</a>
+        <section class="mb-16">
+            <div class="flex items-center gap-3 border-l-4 border-amber-500 pl-4 mb-8">
+                <span class="text-2xl">📝</span>
+                <h2 class="text-2xl font-bold tracking-tight text-gray-900">JavaScript 語法練習</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-2.5 py-1 text-xs font-semibold rounded-md bg-amber-50 text-amber-600 border border-amber-200">JavaScript</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">作業 04 — JS 基礎 10 題</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">if 判斷、for/while 迴圈、function、array、object、JSON 解析。</p>
+                        <div class="flex flex-wrap gap-1.5 mb-6">
+                            <span class="bg-slate-100 text-slate-600 text-[11px] px-2 py-0.5 rounded">if</span>
+                            <span class="bg-slate-100 text-slate-600 text-[11px] px-2 py-0.5 rounded">for</span>
+                            <span class="bg-slate-100 text-slate-600 text-[11px] px-2 py-0.5 rounded">while</span>
+                            <span class="bg-slate-100 text-slate-600 text-[11px] px-2 py-0.5 rounded">function</span>
+                            <span class="bg-slate-100 text-slate-600 text-[11px] px-2 py-0.5 rounded">object</span>
+                            <span class="bg-slate-100 text-slate-600 text-[11px] px-2 py-0.5 rounded">JSON</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://github.com/jennn19/_wp/blob/main/homework/04/js-10-questions.js" target="_blank" class="flex-1 text-center bg-amber-50 hover:bg-amber-100 text-amber-700 text-sm font-medium py-2 rounded-lg transition">檢視程式碼</a>
+                        <a href="https://github.com/jennn19/_wp/blob/main/homework/04/README.md" target="_blank" class="flex-1 text-center bg-gray-50 hover:bg-gray-100 text-gray-700 text-sm font-medium py-2 rounded-lg transition">說明文件</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-2.5 py-1 text-xs font-semibold rounded-md bg-amber-50 text-amber-600 border border-amber-200">JavaScript</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">作業 05 — 回呼函式</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">高階函式接收 callback，進行加法與減法運算練習。</p>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://github.com/jennn19/_wp/blob/main/homework/05/callback.js" target="_blank" class="w-full text-center bg-amber-50 hover:bg-amber-100 text-amber-700 text-sm font-medium py-2 rounded-lg transition">檢視程式碼</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-2.5 py-1 text-xs font-semibold rounded-md bg-amber-50 text-amber-600 border border-amber-200">JavaScript</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">作業 07 — 物件操作</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">物件屬性存取練習：點記法與括號記法操作 post 物件。</p>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://github.com/jennn19/_wp/blob/main/homework/07/object-operation.js" target="_blank" class="w-full text-center bg-amber-50 hover:bg-amber-100 text-amber-700 text-sm font-medium py-2 rounded-lg transition">檢視程式碼</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-2.5 py-1 text-xs font-semibold rounded-md bg-amber-50 text-amber-600 border border-amber-200">JavaScript</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">JS 入門測試</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">最基本的 JavaScript 測試：console.log 輸出 Hello。</p>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://github.com/jennn19/_wp/blob/main/homework/hello.js" target="_blank" class="w-full text-center bg-amber-50 hover:bg-amber-100 text-amber-700 text-sm font-medium py-2 rounded-lg transition">檢視程式碼</a>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="card server">
-                <div class="card-body">
-                    <span class="badge">Rust / Actix-web</span>
-                    <h3>作業 08 — Rust 後端</h3>
-                    <p>使用 Rust Actix-web 框架實作高效能後端伺服器。</p>
-                    <div class="tech"><span>Rust</span><span>Actix-web</span></div>
-                    <a class="btn" href="../08/server-rust/src" target="_blank">檢視程式碼</a>
-                    <a class="btn" href="https://github.com/jennn19/_wp/tree/main/homework/08/server-rust" target="_blank">資料夾</a>
-                </div>
-            </div>
+    </main>
 
-            <div class="card server">
-                <div class="card-body">
-                    <span class="badge">Node.js / Express + SQLite</span>
-                    <h3>opencode — 部落格系統</h3>
-                    <p>完整部落格後端，Node.js + Express + SQLite 資料庫，支援文章 CRUD。</p>
-                    <div class="tech"><span>Express</span><span>SQLite</span></div>
-                    <a class="btn" href="../opencode/blog/server.js" target="_blank">檢視程式碼</a>
-                    <a class="btn" href="https://github.com/jennn19/_wp/tree/main/homework/opencode/blog" target="_blank">資料夾</a>
-                </div>
-            </div>
-        </div>
+    <footer class="bg-slate-900 text-slate-400 py-8 px-6 text-center border-t border-slate-800 text-sm">
+        <p class="mb-2">國立金門大學資訊工程系 · 網頁設計課程 · 114 學年下學期</p>
+        <p>GitHub: <a href="https://github.com/jennn19/_wp" target="_blank" class="text-blue-400 hover:underline">github.com/jennn19/_wp</a></p>
+    </footer>
 
-        <div class="section-title">📝 JavaScript 語法練習</div>
-        <div class="grid">
-            <div class="card code">
-                <div class="card-body">
-                    <span class="badge">JavaScript</span>
-                    <h3>作業 04 — JS 基礎 10 題</h3>
-                    <p>if 判斷、for/while 迴圈、function、array、object、JSON 解析。</p>
-                    <div class="tech"><span>if</span><span>for</span><span>while</span><span>function</span><span>object</span><span>JSON</span></div>
-                    <a class="btn" href="../04/10-score.js" target="_blank">檢視程式碼</a>
-                    <a class="btn" href="../04/README.md" target="_blank">說明文件</a>
-                </div>
-            </div>
-
-            <div class="card code">
-                <div class="card-body">
-                    <span class="badge">JavaScript</span>
-                    <h3>作業 05 — 回呼函式</h3>
-                    <p>高階函式接收 callback，進行加法與減法運算練習。</p>
-                    <a class="btn" href="../05/1.js" target="_blank">檢視程式碼</a>
-                </div>
-            </div>
-
-            <div class="card code">
-                <div class="card-body">
-                    <span class="badge">JavaScript</span>
-                    <h3>作業 07 — 物件操作</h3>
-                    <p>物件屬性存取練習：點記法與括號記法操作 post 物件。</p>
-                    <a class="btn" href="../07/10.js" target="_blank">檢視程式碼</a>
-                </div>
-            </div>
-
-            <div class="card code">
-                <div class="card-body">
-                    <span class="badge">JavaScript</span>
-                    <h3>JS 入門測試</h3>
-                    <p>最基本的 JavaScript 測試：console.log 輸出 Hello。</p>
-                    <a class="btn" href="../js/hello.js" target="_blank">檢視程式碼</a>
-                </div>
-            </div>
-        </div>
-
-        <footer>
-            <p>國立金門大學資訊工程系 · 網頁設計課程 · 114 學年下學期</p>
-            <p style="margin-top:6px;">GitHub: <a href="https://github.com/jennn19/_wp" target="_blank" style="color:var(--accent);">github.com/jennn19/_wp</a></p>
-        </footer>
-    </div>
 </body>
 </html>
